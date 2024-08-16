@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>time</label>
-                                        <input type="time" class="form-control" name="deadline_time" value="{{ $task->deadline_time }}">
+                                        <input type="time" class="form-control" name="deadline_time" value="{{ $time }}">
                                     </div>
                                     <div >
                                         <button type="submit" class="btn btn-warning">Update</button>

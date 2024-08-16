@@ -61,6 +61,7 @@
                         allDay         : @if($record->deadline_time) false, @else true, @endif
                         backgroundColor: '#00a65a',
                         borderColor    : '#00a65a',
+                        url:'{{ Route("show_task",["task"=>$record->id]) }}',
                     },
                    @endif
                 @endforeach

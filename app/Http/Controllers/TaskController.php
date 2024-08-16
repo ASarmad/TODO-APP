@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskCreateUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Carbon\Carbon;
 
 class TaskController extends Controller
 {
@@ -56,7 +57,12 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('tasks.update',compact('task'));
+        if(isset($task->deadline_time)){
+            $time = Carbon::createFromFormat('H:i:s', $task->deadline_time)->format('H:i');
+        }else{
+            $time='24:00:00';
+        }
+        return view('tasks.update',compact('time','task'));
     }
 
     /**
@@ -91,6 +97,9 @@ class TaskController extends Controller
             return response()->json('Error , please try again later', 400);
         }
     }
+    /**
+     * Change the status of the task.
+     */
     public function changeStatus(Task $task)
     {
         try{

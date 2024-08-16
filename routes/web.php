@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-/**
- * THIS IS ROUTES FOR START THE WEBSITE
- */
 
 Route::group(['middleware'=>'auth:web'], function () {
     Route::get('/',[UserController::class, 'index'])->name('home');
@@ -26,8 +23,8 @@ Route::group(['middleware'=>'auth:web'], function () {
      * THIS IS ROUTES FOR USER CONTROLLER
      */
     Route::controller(UserController::class)->group(function () {
-    Route::get('/setting', function (){ return view('setting'); })->name('setting');
-    Route::put('/setting/update', 'updatePassword')->name('user_password_update');
+        Route::get('/setting', function (){ return view('setting'); })->name('setting');
+        Route::put('/setting/update', 'updatePassword')->name('user_password_update');
     });
 
     /**

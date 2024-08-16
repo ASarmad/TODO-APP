@@ -15,11 +15,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <h1 class="text-center">title: {{$task->title}}</h1>
+                                    <h1 class="text-center">Title: {{$task->title}}</h1>
                                     <h1 class="text-center">Message: {{$task->message}}</h1>
-                                    <h1 class="text-center">deadline Date: {{$task->deadline_date}}</h1>
-                                    <h1 class="text-center">deadline Time: {{$task->deadline_time}}</h1>
-                                    <h1 class="text-center">status: {{$task->status}}</h1>
+                                    <h1 class="text-center">Deadline Date: {{$task->deadline_date}}</h1>
+                                    <h1 class="text-center">Deadline Time: @if($task->deadline_time) {{$task->deadline_time}}@else N/A @endif</h1>
+                                    <h1 class="text-center">Status:<span style="@if($task->status=='Pending') color:yellow; @else color:green; @endif">{{$task->status}}</span></h1>
                                 </div>
                                 <div class="col-6">
                                     <form method="post" action="{{ Route('change_task_status',['task'=>$task->id]) }}" class="ajax-form">
